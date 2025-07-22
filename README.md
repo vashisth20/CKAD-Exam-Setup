@@ -38,13 +38,23 @@ source ~/.bashrc
 vi ~/.vimrc
 ```
 
-Paste:
+Add this to `.vimrc`:
 
 ```vim
 autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=2
 ```
 
-This improves indentation when editing YAML files in Vim (auto indent, 2 spaces, etc.).
+Explanation:
+
+| Setting | Meaning                        |
+| ------- | ------------------------------ |
+| `et`    | Expand tabs to spaces          |
+| `ts=2`  | Tab stop = 2 spaces            |
+| `sw=2`  | Shift width (indent level) = 2 |
+| `ai`    | Auto-indent                    |
+| `sts=2` | Soft tab stop = 2 spaces       |
+
+This setup ensures Vim won’t break your YAML formatting when you edit generated files like pod.yaml, deployment.yaml, etc.
 
 ## ✅ Step 3: Track Questions (Q1 to Q19)
 
