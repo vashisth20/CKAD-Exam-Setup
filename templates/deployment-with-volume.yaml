@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volume-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volapp
+  template:
+    metadata:
+      labels:
+        app: volapp
+    spec:
+      containers:
+        - name: app
+          image: busybox
+          command: ["sh", "-c", "echo hello > /data/test.txt && sleep 3600"]
+          volumeMounts:
+            - name: storage
+              mountPath: /data
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: mypvc
